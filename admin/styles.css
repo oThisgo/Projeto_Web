@@ -1,0 +1,153 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    color: white;
+    display: block;
+    position: relative;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    width: auto;
+    height: fit-content;
+    padding: 20px;
+    background-color: #2f2f2f;
+}
+
+header a{
+    right: 50px;
+    color: #00930f;
+    text-decoration: none;
+}
+
+header a:hover{
+    color: #007a0c;
+    cursor: pointer;
+}
+
+body{
+    height: fit-content;
+    margin: 0;
+    background-repeat: repeat-x;
+    background-attachment: absolute;
+    object-fit: fill;
+    background: linear-gradient(#4e4e4e, #2e2e2e) fixed;
+}
+
+form{
+    display: block;
+    color: #00930f;
+    width: 500px;
+    height: fit-content;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+form h1{
+    margin-bottom: 80px;
+}
+
+input{
+    display: block;
+    padding: 20px;
+    border-radius: 25px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.btn{
+    background-color: #00930f;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.btn:hover{
+    background-color: #007a0c;
+}
+
+.container{
+    display: block;
+    padding: 30px;
+    background-color: white;
+}
+
+table{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    height: fit-content;
+    width: fit-content;
+    padding: 30px;
+    background-color: white;
+    border: 3px solid #00930f;
+    border-radius: 15px;
+}
+
+th{
+    background-color: white;
+    border-radius: 20px;
+    border: 3px solid #00930f;
+    padding: 10px;
+}
+
+th:hover{
+    background-color: #007a0c;
+    color: white;
+    cursor: pointer;
+}
+
+td{
+    background-color: white;
+    border-radius: 20px;
+    border: 3px solid #00930f;
+    padding: 10px;
+}
+
+td:hover{
+    background-color: #007a0c;
+    color: white;
+    cursor: pointer;
+}
+
+#profile{
+    display: block;
+    margin: 0 auto;
+    height: 50px;
+    width: 50px;
+    border: 3px solid #00930f;
+    border-radius: 50%;
+}
+#perfil{
+    color: #00930f;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: fit-content;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    border: 3px solid #00930f;
+    border-radius: 10px;
+}
+
+.edit{
+    color: blue;
+    font-weight: bold;
+    text-decoration: none;    
+}
+
+.delete{
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+}

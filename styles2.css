@@ -1,0 +1,59 @@
+#form-login{
+    display: block;
+    width: 40%;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 140px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+#fieldset-login{
+    padding: 30px;
+    border: 1px solid transparent;
+    background-color: white;
+    border-radius: 25px;
+}
+
+#botom{
+    display: block; 
+    margin-right: auto;
+    margin-left: auto; 
+    margin-top: 30px; 
+    font-size: 30px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 100px; 
+    padding-left: 100px; 
+    width: fit-content; 
+    height: fit-content; 
+    background-color: #00930f; 
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+#botom:hover{
+    background-color: #007a0c;
+}
+
+#continuar-com{
+    display: inline-block;
+    margin: 30px;
+    text-decoration: none;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(210, 210, 210);
+    color: black;
+    padding: 20px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+#continuar-com:hover{
+    background-color: rgb(145, 145, 145);
+}
