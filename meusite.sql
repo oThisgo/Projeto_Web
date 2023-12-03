@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Nov-2023 às 02:00
+-- Tempo de geração: 03-Dez-2023 às 07:52
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.3.27
 
@@ -42,7 +42,9 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`userID`, `nome`, `usuario`, `email`, `senha`, `imagem`, `data`) VALUES
-(1, 'Thiago Schiedeck', 'oThisgo', 'thiagosds1701@gmail.com', 't17s01d05', 'thiago.png', '2023-11-23');
+(1, 'Thiago Schiedeck ', 'oThisgo', 'thiagosds1701@gmail.com', '156702288e53e328ed79c58b10e4a64f7341e3a8', 'thiago.png', '2023-11-23'),
+(2, 'Henry Santos Pacheco', 'henry', 'henry@gmail.com', 'f2322817ca162253c324f0ed84c9c105ba15c1f2', 'henry.png', '2023-12-02'),
+(3, 'Vitor Balde', 'vitor_balde', 'vitorbalde@gmail.com', 'ec67558b8573e2c5fc2f3d10bc2b3840d8850721', 'vitor.png', '2023-12-02');
 
 -- --------------------------------------------------------
 
@@ -149,7 +151,7 @@ ALTER TABLE `secoes`
 -- AUTO_INCREMENT de tabela `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `departamentos`

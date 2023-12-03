@@ -38,7 +38,7 @@ body{
 form{
     display: block;
     color: #00930f;
-    width: 500px;
+    width: 600px;
     height: fit-content;
     margin: 0;
     position: absolute;
@@ -150,4 +150,17 @@ td:hover{
     color: red;
     font-weight: bold;
     text-decoration: none;
+}
+
+.edit-btn{
+    display: block;
+    background-color: #00930f;
+    color: white;
+    font-weight: bold;
+    float: left;
+    border: none;
+}
+
+.edit-btn:hover{
+    background-color: #007a0c;
 }
