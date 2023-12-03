@@ -17,7 +17,7 @@ session_start()
         <h1>Editar Usuário</h1>
         <?php 
         $id = $_REQUEST['id'];
-        $sql = "SELECT * FROM usuarios WHERE userID =" . $id;
+        $sql = "SELECT * FROM admins WHERE userID =" . $id;
         $command = mysqli_query($db, $sql);
         $return = mysqli_fetch_assoc($command);
         ?>
@@ -71,7 +71,7 @@ session_start()
                         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
                         $senha = sha1($_POST['senha']);
                 
-                        $sql2 = "UPDATE usuarios SET nome = '$nome', usuario = '$user', email = '$email', senha = '$senha', imagem = '$filename' WHERE userID = $id";
+                        $sql2 = "UPDATE admins SET nome = '$nome', usuario = '$user', email = '$email', senha = '$senha', imagem = '$filename' WHERE userID = $id";
                         if (mysqli_query($db, $sql2)) {
                             header('Location: painel.php');
                         } else {
@@ -87,7 +87,7 @@ session_start()
                 $email2 = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
                 $senha2 = sha1($_POST['senha']);
                 
-                $sql3 = "UPDATE usuarios SET nome = '$nome2', usuario = '$user2', email = '$email2', senha = '$senha2' WHERE userID = $id";
+                $sql3 = "UPDATE admins SET nome = '$nome2', usuario = '$user2', email = '$email2', senha = '$senha2' WHERE userID = $id";
                 if (mysqli_query($db, $sql3)) {
                     header('Location: painel.php');
                 } else {
@@ -95,7 +95,7 @@ session_start()
                 }
             }
         } else{
-            echo 'Preencha todos os campos';
+            echo "<b style='color: white, margin: 30px'>Preencha todos os campos</b>";
         }
     ?>
 </body>

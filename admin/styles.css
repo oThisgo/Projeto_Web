@@ -164,3 +164,21 @@ td:hover{
 .edit-btn:hover{
     background-color: #007a0c;
 }
+
+.add{
+    display: block;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    background-color: #00930f;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-left: 250px;
+    margin-top: 80px;
+    font-weight: bold;
+}
+
+.add:hover{
+    background-color: #007a0c;
+}

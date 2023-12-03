@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2023 às 07:52
+-- Tempo de geração: 03-Dez-2023 às 19:11
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.3.27
 
@@ -42,9 +42,9 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`userID`, `nome`, `usuario`, `email`, `senha`, `imagem`, `data`) VALUES
-(1, 'Thiago Schiedeck ', 'oThisgo', 'thiagosds1701@gmail.com', '156702288e53e328ed79c58b10e4a64f7341e3a8', 'thiago.png', '2023-11-23'),
-(2, 'Henry Santos Pacheco', 'henry', 'henry@gmail.com', 'f2322817ca162253c324f0ed84c9c105ba15c1f2', 'henry.png', '2023-12-02'),
-(3, 'Vitor Balde', 'vitor_balde', 'vitorbalde@gmail.com', 'ec67558b8573e2c5fc2f3d10bc2b3840d8850721', 'vitor.png', '2023-12-02');
+(4, 'Vitor Balde', 'vitor_balde', 'vitorbalde@gmail.com', 'ec67558b8573e2c5fc2f3d10bc2b3840d8850721', '', '2023-12-03'),
+(5, 'Henry Santos', 'henry_santos', 'henry@gmail.com', 'f2322817ca162253c324f0ed84c9c105ba15c1f2', '', '2023-12-03'),
+(6, 'Thiago Schiedeck', 'oThisgo', 'thiago@gmail.com', '156702288e53e328ed79c58b10e4a64f7341e3a8', 'chorro.jpg', '2023-12-03');
 
 -- --------------------------------------------------------
 
@@ -115,6 +115,29 @@ INSERT INTO `secoes` (`SecaoID`, `secao`) VALUES
 (4, 'PC GAMER'),
 (5, 'GIFT CARDS');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `userID` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `imagem` varchar(255) NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`userID`, `nome`, `email`, `imagem`, `usuario`, `senha`, `data`) VALUES
+(6, 'William Tavares de Moura', 'will@gmail.com', '03-12-2023_06-45-29_RE2.jpg', 'will01', '58054aa0373a1bccc7b3095ffd708d1955ade80b', '2023-12-03');
+
 --
 -- Índices para tabelas despejadas
 --
@@ -144,6 +167,12 @@ ALTER TABLE `secoes`
   ADD PRIMARY KEY (`SecaoID`);
 
 --
+-- Índices para tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`userID`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -151,7 +180,7 @@ ALTER TABLE `secoes`
 -- AUTO_INCREMENT de tabela `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `departamentos`
@@ -170,6 +199,12 @@ ALTER TABLE `produtos`
 --
 ALTER TABLE `secoes`
   MODIFY `SecaoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
