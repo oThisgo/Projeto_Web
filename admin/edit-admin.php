@@ -1,6 +1,7 @@
 <?php 
 include_once '../Includes/db.php';
-session_start() 
+session_start(); 
+if ($_SESSION['ativa'] = TRUE) {
 ?>
 
 <!DOCTYPE html>
@@ -12,16 +13,16 @@ session_start()
     <title>Painel administrativo - Ivonas Store</title>
 </head>
 <body>
-    
+    <a id='back' href="painel.php">Voltar</a>
     <form class="editform" method="post" action="" enctype="multipart/form-data">
-        <h1>Editar Usuário</h1>
+        <h1>Editar Administrador</h1>
         <?php 
         $id = $_REQUEST['id'];
         $sql = "SELECT * FROM admins WHERE userID =" . $id;
         $command = mysqli_query($db, $sql);
         $return = mysqli_fetch_assoc($command);
         ?>
-        <img style="display: block; margin-top: -30px; margin-left: 120px; width: 150px; height: 150px; border: 3px solid #00930f; border-radius: 50%;"src="Images/<?php echo $return['imagem']; ?>"> 
+        <img style="display: block; margin-top: -30px; margin-left: 90px; width: 150px; height: 150px; border: 3px solid #00930f; border-radius: 50%;"src="Images/<?php echo $return['imagem']; ?>"> 
         <input type="file" name="anexo">
         <input style="float: left;" type='text' name='nome' value='<?php echo $return['nome']; ?>' required>
         <input style="float: right;" type='email' name='email' value='<?php echo $return['email']; ?>' required>
@@ -31,9 +32,8 @@ session_start()
     </form>
 
     <?php
-
         if (isset($_POST['editar'])) {
-            if (isset($_POST['anexo'])) {
+            if (!empty($_FILES['anexo']['name'])) {
                 $imgname = $_FILES['anexo']['name'];
                 $fileextension = pathinfo($imgname);
                 $extensions = ['png', 'jpeg', 'jpg'];
@@ -69,7 +69,7 @@ session_start()
                         $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                         $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-                        $senha = sha1($_POST['senha']);
+                        $senha = sha1(filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
                 
                         $sql2 = "UPDATE admins SET nome = '$nome', usuario = '$user', email = '$email', senha = '$senha', imagem = '$filename' WHERE userID = $id";
                         if (mysqli_query($db, $sql2)) {
@@ -85,7 +85,7 @@ session_start()
                 $nome2 = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $user2 = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $email2 = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-                $senha2 = sha1($_POST['senha']);
+                $senha2 = sha1(filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
                 
                 $sql3 = "UPDATE admins SET nome = '$nome2', usuario = '$user2', email = '$email2', senha = '$senha2' WHERE userID = $id";
                 if (mysqli_query($db, $sql3)) {
@@ -95,8 +95,13 @@ session_start()
                 }
             }
         } else{
-            echo "<b style='color: white, margin: 30px'>Preencha todos os campos</b>";
+            echo "<b style='color: red'>Preencha todos os campos</b>";
         }
-    ?>
+?>
 </body>
 </html>
+<?php
+} else {
+    header('Location: index.php');
+}
+?>

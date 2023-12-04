@@ -1,6 +1,8 @@
 <?php 
 include_once '../Includes/db.php';
-session_start() 
+session_start(); 
+if ($_SESSION['ativa'] = TRUE) {
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-Br">
@@ -87,3 +89,8 @@ session_start()
     </table>
 </body>
 </html>
+<?php
+} else {
+    header('Location: index.php');
+}
+?>

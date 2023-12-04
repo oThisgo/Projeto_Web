@@ -38,7 +38,7 @@ body{
 form{
     display: block;
     color: #00930f;
-    width: 600px;
+    width: 510px;
     height: fit-content;
     margin: 0;
     position: absolute;
@@ -127,6 +127,7 @@ td:hover{
     border: 3px solid #00930f;
     border-radius: 50%;
 }
+
 #perfil{
     color: #00930f;
     display: block;
@@ -174,11 +175,34 @@ td:hover{
     background-color: #00930f;
     text-decoration: none;
     border-radius: 20px;
-    margin-left: 250px;
+    margin-left: 200px;
     margin-top: 80px;
     font-weight: bold;
+    border: 3px solid white;
 }
 
 .add:hover{
     background-color: #007a0c;
+}
+
+#back{
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    border-radius: 25px;
+    color: white;
+    background-color: #00930f;
+    padding: 20px;
+    font-size: 20px;
+    text-decoration: none;
+    border: 3px solid white
+}
+
+#back:hover{
+    background-color: #007a0c;
+}
+
+caption{
+    font-size: 24px;
+    margin-bottom: 20px;
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2023 às 19:11
--- Versão do servidor: 10.4.17-MariaDB
--- versão do PHP: 7.3.27
+-- Tempo de geração: 04-Dez-2023 às 14:49
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,16 +35,16 @@ CREATE TABLE `admins` (
   `senha` varchar(255) NOT NULL,
   `imagem` varchar(255) NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `admins`
 --
 
 INSERT INTO `admins` (`userID`, `nome`, `usuario`, `email`, `senha`, `imagem`, `data`) VALUES
-(4, 'Vitor Balde', 'vitor_balde', 'vitorbalde@gmail.com', 'ec67558b8573e2c5fc2f3d10bc2b3840d8850721', '', '2023-12-03'),
-(5, 'Henry Santos', 'henry_santos', 'henry@gmail.com', 'f2322817ca162253c324f0ed84c9c105ba15c1f2', '', '2023-12-03'),
-(6, 'Thiago Schiedeck', 'oThisgo', 'thiago@gmail.com', '156702288e53e328ed79c58b10e4a64f7341e3a8', 'chorro.jpg', '2023-12-03');
+(4, 'Vitor Balde', 'vitor_balde', 'vitorbalde@gmail.com', 'ec67558b8573e2c5fc2f3d10bc2b3840d8850721', '04-12-2023_01-43-30_Raccoon_in_Central_Park_(35264).jpg', '2023-12-03'),
+(5, 'Henry Santos', 'henry_santos', 'henry@gmail.com', 'f2322817ca162253c324f0ed84c9c105ba15c1f2', '04-12-2023_01-47-39_raccoon-grass_3x4.png', '2023-12-03'),
+(6, 'Thiago Schiedeck Dias', 'oThisgo', 'thiago@gmail.com', '156702288e53e328ed79c58b10e4a64f7341e3a8', '04-12-2023_01-38-23_vlcsnap_2023_12_01_10h37m31s394.0.jpg', '2023-12-03');
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ INSERT INTO `admins` (`userID`, `nome`, `usuario`, `email`, `senha`, `imagem`, `
 CREATE TABLE `departamentos` (
   `DepartamentoID` int(11) NOT NULL,
   `departamento` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `departamentos`
@@ -82,7 +82,7 @@ CREATE TABLE `produtos` (
   `descricao` longtext NOT NULL,
   `secao` varchar(255) NOT NULL,
   `departamento` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Extraindo dados da tabela `produtos`
@@ -103,7 +103,7 @@ INSERT INTO `produtos` (`ProdutoID`, `nome`, `preco`, `imagem`, `imagem2`, `imag
 CREATE TABLE `secoes` (
   `SecaoID` int(11) NOT NULL,
   `secao` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `secoes`
@@ -129,14 +129,15 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`userID`, `nome`, `email`, `imagem`, `usuario`, `senha`, `data`) VALUES
-(6, 'William Tavares de Moura', 'will@gmail.com', '03-12-2023_06-45-29_RE2.jpg', 'will01', '58054aa0373a1bccc7b3095ffd708d1955ade80b', '2023-12-03');
+(6, 'William Tavares de Moura', 'will@gmail.com', '04-12-2023_01-44-47_download.png', 'will01', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', '2023-12-03'),
+(7, 'Danilo Gentili', 'thenoite@gmail.com', '04-12-2023_01-50-02_2019_Presidente_Jair_Bolsonaro_no_Programa_The_Noite_do_SBT_-_47968955187_(cropped).png', 'danilo.php', '8d6fad0d56647ad476016c092311f9fe663a40ff', '2023-12-04');
 
 --
 -- Índices para tabelas despejadas
@@ -204,7 +205,7 @@ ALTER TABLE `secoes`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,6 +1,8 @@
 <?php 
 include_once '../Includes/db.php';
-session_start() 
+session_start(); 
+
+if ($_SESSION['ativa'] = TRUE) {
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ session_start()
 
 <form class="editform" method="post" action="" enctype="multipart/form-data">
 <h1>Adicionar Usuário</h1>
-
+<a id='back' href="painel.php">Voltar</a>
 <img style="display: block; margin-top: -30px; margin-left: 120px; width: 150px; height: 150px; border: 3px solid #00930f; border-radius: 50%;"> 
 <input type="file" id="anexo" name="anexo" required>
 <input style="float: left;" type='text' name='nome' placeholder="Nome Completo" required>
@@ -62,7 +64,7 @@ if (isset($_POST['add']) && !empty($_POST['email']) && !empty($_POST['senha'])) 
             $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-            $senha = sha1($_POST['senha']);
+            $senha = sha1(filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
                 
             $sql = "INSERT INTO usuarios(nome, email, imagem, usuario, senha, data) VALUES('$nome', '$email', '$filename', '$user', '$senha', NOW())";
             if (mysqli_query($db, $sql)) {
@@ -75,5 +77,8 @@ if (isset($_POST['add']) && !empty($_POST['email']) && !empty($_POST['senha'])) 
         }
     }
 } else {
-    echo 'Preencha todos os campos';
+    echo "<b style='color: red'>Preencha todos os campos</b>";
+}
+} else {
+    header('Location: index.php');
 }
