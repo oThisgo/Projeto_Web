@@ -87,6 +87,39 @@ if ($_SESSION['ativa'] = TRUE) {
             }
         ?>                
     </table>
+
+    <a class="add" href="add.php">Adicionar Produto +</a>
+
+    <table>
+        <caption style="font-weight: bold; color: #00930f;">Produtos</caption>
+        <tr>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Seção</th>
+            <th>Departamento</th>
+            <th>Preço</th>
+        </tr>
+
+        <?php
+            $sql4 = 'SELECT * FROM produtos';
+            $command4 = mysqli_query($db, $sql4); 
+            if ($command4) {
+                while ($row3 = mysqli_fetch_array($command4)) {?>
+                <tr>
+                    <td><img id="profile" src="../Images/<?php echo $row3['imagem'] ?>"></td>
+                    <td><?php echo $row3['nome'] ?></td>
+                    <td><?php echo implode(' ', array_slice(explode(' ', $row3['descricao']), 0, 5))."..."; ?></td>
+                    <td><?php echo $row3['secao'] ?></td>
+                    <td><?php echo $row3['departamento'] ?></td>
+                    <td><?php echo "R$".$row3['preco'] ?></td>
+                    <td><a class="edit" href="edit-produto.php?id='<?php echo $row3['ProdutoID']; ?>'">Editar</a></td>
+                    <td><a class="delete" href="delete-produto.php?id='<?php echo $row3['ProdutoID']; ?>'">Excluir</a></td>
+                </tr><?php
+                }
+            }
+        ?>                
+    </table>
 </body>
 </html>
 <?php
