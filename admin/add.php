@@ -13,10 +13,9 @@ if ($_SESSION['ativa'] = TRUE) {
     <link href='styles.css' rel='stylesheet'>
     <title>Painel administrativo - Ivonas Store</title>
 </head>
-
+<a id='back' href="painel.php">Voltar</a>
 <form class="editform" method="post" action="" enctype="multipart/form-data">
 <h1>Adicionar Usuário</h1>
-<a id='back' href="painel.php">Voltar</a>
 <img style="display: block; margin-top: -30px; margin-left: 120px; width: 150px; height: 150px; border: 3px solid #00930f; border-radius: 50%;"> 
 <input type="file" id="anexo" name="anexo" required>
 <input style="float: left;" type='text' name='nome' placeholder="Nome Completo" required>

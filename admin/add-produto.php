@@ -17,18 +17,12 @@ if ($_SESSION['ativa'] = TRUE) {
     <a id='back' href="painel.php">Voltar</a>
     <form class="editform" method="post" action="" enctype="multipart/form-data">
         <h1>Editar Produto</h1>
-        <?php 
-        $id = $_REQUEST['id'];
-        $sql = "SELECT * FROM produtos WHERE ProdutoID =" . $id;
-        $command = mysqli_query($db, $sql);
-        $return = mysqli_fetch_assoc($command);
-        ?>
-        <img style="width: 100px; height: 100px; border: 3px solid #00930f; border-radius: 50%;"src="../Images/<?php echo $return['imagem']; ?>"> 
-        <img style="width: 100px; height: 100px; border: 3px solid #00930f; border-radius: 50%;"src="../Images/<?php echo $return['imagem2']; ?>"> 
-        <img style="width: 100px; height: 100px; border: 3px solid #00930f; border-radius: 50%;"src="../Images/<?php echo $return['imagem3']; ?>"> 
-        <input type="file" name="anexo[]" multiple>
-        <input style="display: block; float: left;" type='text' name='nome' value='<?php echo $return['nome']; ?>' required>
-        <textarea style="display: block; height: 200px; width: 500px; max-width: 500px; float: left;" name='descricao' required><?php echo $return['descricao']; ?></textarea>
+        <img style="width: 100px; height: 100px; border: 3px solid #00930f; border-radius: 50%;"> 
+        <img style="width: 100px; height: 100px; border: 3px solid #00930f; border-radius: 50%;"> 
+        <img style="width: 100px; height: 100px; border: 3px solid #00930f; border-radius: 50%;"> 
+        <input type="file" name="anexo[]" multiple required>
+        <input placeholder="Nome" style="display: block; float: left;" type='text' name='nome' required>
+        <textarea placeholder="Descrição" style="display: block; height: 200px; width: 500px; max-width: 500px; float: left;" name='descricao' required></textarea>
         <select style="margin-bottom: 15px;" name='secao' required>
             <?php
             
@@ -51,12 +45,12 @@ if ($_SESSION['ativa'] = TRUE) {
 
             ?> 
         </select>
-        <input style="display: block; margin-top: 40px; float: left;" type='number' name='preco' value='<?php echo $return['preco']; ?>' required>
-        <input style="margin-top: 40px; margin-left: 50px;" class="edit-btn" type='submit' name='editar' value='EDITAR'>
+        <input placeholder="Preço" style="display: block; margin-top: 40px; float: left;" type='number' name='preco' required>
+        <input style="margin-top: 40px; margin-left: 50px;" class="edit-btn" type='submit' name='add' value='ADICIONAR'>
     </form>
 
     <?php
-        if (isset($_POST['editar']) && !empty($_POST['secao']) && !empty($_POST['departamento']) && !empty($_POST['nome']) && !empty($_POST['descricao']) && !empty($_POST['preco']) && is_numeric($_POST['preco'])) {
+        if (isset($_POST['add']) && !empty($_POST['secao']) && !empty($_FILES['anexo']['name']) && !empty($_POST['departamento']) && !empty($_POST['nome']) && !empty($_POST['descricao']) && !empty($_POST['preco']) && is_numeric($_POST['preco'])) {
             if (!empty($_FILES['anexo']['name'])) {
                 $imagens = [];
                 $total = count($_FILES['anexo']['name']);
@@ -109,36 +103,23 @@ if ($_SESSION['ativa'] = TRUE) {
                 $img1 = $imagens[0];
                 $img2 = $imagens[1];
                 $img3 = $imagens[2];
-                $sql2 = "UPDATE produtos SET nome = '$nome', preco = '$preco', imagem = '$img1', imagem2 = '$img2', imagem3 = '$img3', descricao = '$descricao', secao = '$secao', departamento = '$departamento' WHERE ProdutoID = $id";
+                $sql2 = "INSERT INTO produtos (nome, preco, imagem, imagem2, imagem3, descricao, secao, departamento) VALUES ('$nome','$preco', '$img1', '$img2', '$img3', '$descricao', '$secao', '$departamento')";
        
                 if (mysqli_query($db, $sql2)) {
                     header('Location: painel.php');
                 } else {
                     echo "Erro no Update: " . mysqli_error($db);
                 }
-
             } else {
-                $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $secao = $_POST['secao'];
-                $departamento = $_POST['departamento'];
-                $descricao = htmlspecialchars(filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
-                $preco = $_POST['preco'];
-                $sql3 = "UPDATE produtos SET nome = '$nome', preco = '$preco', descricao = '$descricao', secao = '$secao', departamento = '$departamento' WHERE ProdutoID = $id";
-       
-                if (mysqli_query($db, $sql3)) {
-                    header('Location: painel.php');
-                } else {
-                    echo "Erro no Update: " . mysqli_error($db);
-                }
+                echo 'Insira 3 imagens para o produto!';
             }
-        } else{
-            echo "<b style='color: red;'>Preencha todos os campos</b>";
-        }
-    ?>
+        } else {
+            echo "<b style='color: red'>Preencha todos os campos</b>";
+        }?>
 </body>
 </html>
 <?php
-} else {
-    header('Location: index.php');
-}
+    } else {
+        header('Location: index.php');
+    }
 ?>

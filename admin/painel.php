@@ -59,7 +59,7 @@ if ($_SESSION['ativa'] = TRUE) {
         ?>     
     </table>
 
-    <a class="add" href="add.php">Adicionar usuário +</a>
+    <a class="add" href="add.php">Adicionar Usuário +</a>
 
     <table>
         <caption style="font-weight: bold; color: #00930f;">Usuários</caption>
@@ -88,7 +88,7 @@ if ($_SESSION['ativa'] = TRUE) {
         ?>                
     </table>
 
-    <a class="add" href="add.php">Adicionar Produto +</a>
+    <a class="add" href="add-produto.php">Adicionar Produto +</a>
 
     <table>
         <caption style="font-weight: bold; color: #00930f;">Produtos</caption>
@@ -119,6 +119,49 @@ if ($_SESSION['ativa'] = TRUE) {
                 }
             }
         ?>                
+    </table>
+
+    <a class="add" href="add-secao.php">Adicionar Seção +</a>
+    <table>
+        <caption style="font-weight: bold; color: #00930f;">Seções</caption>
+        <tr>
+            <th>Nome</th>
+        </tr>
+        <?php 
+
+            $sql5 = 'SELECT * FROM secoes';
+            $command5 = mysqli_query($db, $sql5); 
+
+            if ($command5) {
+                while ($row4 = mysqli_fetch_array($command5)) {?>
+                <tr>
+                    <td><?php echo $row4['secao'] ?></td>
+                    <td><a class="delete" href="delete-secao.php?id='<?php echo $row4['SecaoID']; ?>'">Excluir</a></td>
+                </tr><?php
+                }
+            }
+        ?>
+    </table>
+    <a style="display: inline-block" class="add" href="add-departamento.php">Adicionar Departamento +</a>
+    <table>
+        <caption style="font-weight: bold; color: #00930f;">Departamentos</caption>
+        <tr>
+            <th>Nome</th>
+        </tr>
+        <?php 
+
+            $sql6 = 'SELECT * FROM departamentos';
+            $command6 = mysqli_query($db, $sql6); 
+
+            if ($command6) {
+                while ($row5 = mysqli_fetch_array($command6)) {?>
+                <tr>
+                    <td><?php echo $row5['departamento'] ?></td>
+                    <td><a class="delete" href="delete-departamento.php?id='<?php echo $row5['DepartamentoID']; ?>'">Excluir</a></td>
+                </tr><?php
+                }
+            }
+        ?>
     </table>
 </body>
 </html>
